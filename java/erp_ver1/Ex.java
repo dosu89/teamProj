@@ -15,6 +15,10 @@ public class Ex {
 	public static void main(String[] args) {
 		Ui.mainUi();
 		
+		
+		System.out.println();
+		System.out.println();
+		System.out.println();
 	}
 	
 }
