@@ -2,7 +2,7 @@ package util;
 
 public class PageCheck {
 
-	public String stockPageCheck(String req) {
+	public static String stockPageCheck(String req) {
 		String page = null;
 		if (req != null && req.equals("list")) {
 			page = "stockList.jsp";
@@ -14,5 +14,13 @@ public class PageCheck {
 			page = "totalStock.jsp";
 		}
 		return page;
+	}
+	
+	public static int pageNumCheck(String page_str) {
+		int pageNum = 1;
+		if (page_str != null) {
+			pageNum = Integer.parseInt(page_str);
+		}
+		return pageNum;
 	}
 }

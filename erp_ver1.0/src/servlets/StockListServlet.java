@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.StockDTO;
 import stock.Service_st;
+import util.DateCheck;
+import util.PageCheck;
 
 @WebServlet("/stockList")
 public class StockListServlet extends HttpServlet {
@@ -18,15 +20,20 @@ public class StockListServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page_str = request.getParameter("pageNum");
-		int pageNum = 1;
-		if (page_str != null) {
-			pageNum = Integer.parseInt(page_str);
-		}
+		int pageNum = PageCheck.pageNumCheck(page_str);
+		
+		String PreDate = request.getParameter("date1");
+		String afDate = request.getParameter("date2");
+		
+		String date2 = DateCheck.setDate2(afDate);
+		String date1 = DateCheck.setDate1(PreDate);
 		
 		Service_st s_serv = new Service_st();
-		List<StockDTO> slist = s_serv.selectAllStock(pageNum);
-		int cnt = s_serv.getListCnt();
+		List<StockDTO> slist = s_serv.stockDateList(date1, date2, pageNum);
+		int cnt = s_serv.getListCntBtwDate(date1, date2);
 		
+		request.setAttribute("date2", date2);
+		request.setAttribute("date1", date1);
 		request.setAttribute("currPage", pageNum);
 		request.setAttribute("totalCnt", cnt);
 		request.setAttribute("slist", slist);

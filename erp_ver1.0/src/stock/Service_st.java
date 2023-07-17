@@ -50,12 +50,10 @@ public class Service_st {
 		}
 		
 		// 두 기간 사이의 재고 입출력 리스트 보여주기
-		public void stockDateList(String date1, String date2, int p) {
+		public List<StockDTO> stockDateList(String date1, String date2, int p) {
 			StockDAO sdao = new StockDAO();
 			List<StockDTO> eList = sdao.getStockDateData(date1, date2, p);
-			for (StockDTO s : eList) {
-				System.out.println(s);
-			}
+			return eList;
 		}
 		
 		// 재고 총량 리스트 반환 후 보여주기

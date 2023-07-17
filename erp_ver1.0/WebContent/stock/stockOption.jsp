@@ -41,7 +41,7 @@
 				  <input type="number" class="form-control" name="alramNum" placeholder="알림 받을 수량을 입력하세요." aria-label="Username" aria-describedby="basic-addon1" value="${alNum }">
 				</div>
 		      </div>
-		      <div class="row h-50" style="margin-bottom : 40px">
+		      <div class="row h-25 mt-5" >
 		      </div>
 		      <div class="row  justify-content-center">
 		      	<button type="submit" class="btn btn-primary align-middle w-25 " onclick="return saveOpt()">저장</button>

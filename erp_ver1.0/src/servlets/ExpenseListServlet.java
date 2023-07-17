@@ -19,8 +19,8 @@ public class ExpenseListServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Service_ex e_serv = new Service_ex();
 		
-		List<ExpenseDTO> eList = e_serv.selectAllExpense();
-		request.setAttribute("elist", eList);
+		//List<ExpenseDTO> eList = e_serv.selectAllExpense();
+		//request.setAttribute("elist", eList);
 		
 		request.getRequestDispatcher("expense.jsp").forward(request, response);
 	}

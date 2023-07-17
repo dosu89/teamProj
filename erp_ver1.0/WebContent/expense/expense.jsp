@@ -14,7 +14,7 @@
 	
 	#page {
         width: 1600px; height: 900px;
-        margin: 0px auto;
+        margin: 20px auto;
         display: grid;
         grid-gap: 10px;
         grid-template-columns: 266px 1fr;
@@ -28,15 +28,10 @@
 	
 	section {
 		grid-area: section;
-		padding : 20px;
-		border : 1px solid black;
-		box-shadow: 5px 5px 5px grey;
 	}
 	
 	aside {
 		grid-area : aside;
-		border : 1px solid black;
-		box-shadow: 5px 5px 5px grey;
 	}
 	
 	#aside-ul {
@@ -58,13 +53,13 @@
 	
 %>
 <div id = "page">
-	<jsp:include page="header.jsp" />
-	<jsp:include page="nav.jsp" />
+	<jsp:include page="../header.jsp" />
+	<jsp:include page="../nav.jsp" />
 	
 	<aside class="container-fluid border shadow p-3  bg-body rounded">
 		<ul id="aside-ul" class="nav justify-content-center">
+			<li class="aside-li nav-item"><a class="nav-link" href="#">지출 등록</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="#">지출 리스트</a></li>
-			<li class="aside-li nav-item"><a class="nav-link" href="#"></a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="#">세부메뉴3</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="#">세부메뉴4</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="#">세부메뉴5</a></li>

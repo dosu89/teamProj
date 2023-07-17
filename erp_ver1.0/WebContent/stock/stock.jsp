@@ -51,9 +51,8 @@
 </head>
 <body>
 <%
-	PageCheck pageCheck = new PageCheck();
 	String req = request.getParameter("req");
-	String includeP = pageCheck.stockPageCheck(req);
+	String includeP = PageCheck.stockPageCheck(req);
 	
 	pageContext.setAttribute("page", includeP);
 %>
@@ -65,8 +64,6 @@
 			<li class="aside-li nav-item"><a class="nav-link" href="totalstock">총 채고량</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="stockList">입/출 리스트</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="registStock">재고 등록</a></li>
-			<li class="aside-li nav-item"><a class="nav-link" href="#">세부메뉴4</a></li>
-			<li class="aside-li nav-item"><a class="nav-link" href="#">세부메뉴5</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="StockOption">옵션</a></li>
 		</ul>
 	</aside>

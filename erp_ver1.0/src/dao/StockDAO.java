@@ -57,7 +57,7 @@ public class StockDAO implements DBcrud{
 	}
 	
 	// 현재 페이지를 번호를 받아
-	// 15개 단위로 모은 재고 입/출력 리스트 반환
+	// 20개 단위로 모은 재고 입/출력 리스트 반환
 	@Override
 	public List<Object> getData(int p) {
 		Connection con = null;
@@ -65,12 +65,12 @@ public class StockDAO implements DBcrud{
 		ResultSet rs = null;
 		List<Object> list = new ArrayList<>();
 		
-		int firstPage = ((p-1) * 15);
+		int firstPage = ((p-1) * 20);
 		
 		String query = "SELECT s.st_no, m.ma_name, s.st_ea, s.st_recDate, s.st_note" + 
 				" FROM stock s LEFT join  material m" + 
 				" on s.ma_code = m.ma_code" + 
-				" ORDER BY st_no DESC LIMIT ?, 15";
+				" ORDER BY st_no DESC LIMIT ?, 20";
 		
 		try {
 			DBconnect connect = new DBconnect();
@@ -189,25 +189,31 @@ public class StockDAO implements DBcrud{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<StockDTO> list = new ArrayList<>();
+		int firstPage = ((p-1) * 20);
 		
-		String query = "SELECT * FROM stock WHERE date(st_recDate) BETWEEN ? AND ? ORDER BY st_no DESC LIMIT ?, 20;";
+		String query = "SELECT s.st_no, m.ma_name, s.st_ea, s.st_recDate, s.st_note" + 
+				" FROM stock s, material m" + 
+				" WHERE s.ma_code = m.ma_code AND date(s.st_recDate) BETWEEN ? AND ?" + 
+				" ORDER BY s.st_recDate DESC LIMIT ?, 20";
+		
+		//String query = "SELECT * FROM stock WHERE date(st_recDate) BETWEEN ? AND ? ORDER BY st_no DESC LIMIT ?, 20;";
 		
 		try {
 			con = DButil.DBcon.getConn();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, date1);
 			pstmt.setString(2, date2);
-			pstmt.setInt(3, p);
+			pstmt.setInt(3, firstPage);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				if( rs != null ) {
 					StockDTO dto = new StockDTO();
-					dto.setSt_no(rs.getInt("st_no"));
-					dto.setMa_code(rs.getString("ma_code"));
-					dto.setSt_ea(rs.getInt("st_ea"));
-					dto.setSt_recDate(rs.getTimestamp("st_recDate").toLocalDateTime());
-					dto.setSt_note(rs.getString("st_note"));
+					dto.setSt_no(rs.getInt("s.st_no"));
+					dto.setMa_code(rs.getString("m.ma_name"));
+					dto.setSt_ea(rs.getInt("s.st_ea"));
+					dto.setSt_recDate(rs.getTimestamp("s.st_recDate").toLocalDateTime());
+					dto.setSt_note(rs.getString("s.st_note"));
 					list.add(dto);
 				}
 			}

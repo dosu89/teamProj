@@ -34,7 +34,7 @@ public class Service_ex {
 			//지출 입력시 재고 데이터 확인후 재고 입력
 			if(e_serv.auto_io(e) != null)
 				s= e_serv.auto_io(e);
-				s_serv.insertStock(s.getMa_code(), s.getSt_ea());
+				//s_serv.insertStock(s.getMa_code(), s.getSt_ea());
 				System.out.println("재고 자동 입력 완료");
 	}
 	
@@ -65,10 +65,11 @@ public class Service_ex {
 	public boolean fixedCostInsert() {
 		FixedCostDAO dao = new FixedCostDAO();
 		boolean flag = false;
+		/*
 		LocalDateTime today = LocalDateTime.now();
 		int day = today.getDayOfMonth();
-		@SuppressWarnings("unchecked")
-		List<FixedCostDTO> fList = (List<FixedCostDTO>)(Object)dao.getData();
+		//@SuppressWarnings("unchecked")
+		//List<FixedCostDTO> fList = (List<FixedCostDTO>)(Object)dao.getData();
 		for (FixedCostDTO f : fList) {
 			if(f.getFi_date() == day) {
 				ExpenseDTO dto = new ExpenseDTO();
@@ -81,10 +82,12 @@ public class Service_ex {
 					flag = true;
 			}
 		}
+		*/
 		return flag;
 	}
 	
 	// 오늘 날짜와 고정비 입력 날짜 체크 후 당일 고정비 목록 반환
+	/*
 	public ArrayList<String> fixedCostCheck() {
 		FixedCostDAO dao = new FixedCostDAO();
 		LocalDateTime today = LocalDateTime.now();
@@ -99,10 +102,12 @@ public class Service_ex {
 		}
 		return f_names;
 	}
+	*/
 	
 	// 지출시 재고 영역 자동 입력을 위한 재고 객체 생성
 	public StockDTO auto_io(ExpenseDTO e) {
 		StockDTO s = null;
+		/*
 		MaterialDAO mdao = new MaterialDAO();
 		@SuppressWarnings("unchecked")
 		List<MaterialDTO> mlist = (List<MaterialDTO>)(Object)mdao.getData();
@@ -115,6 +120,7 @@ public class Service_ex {
 				s.setSt_ea(st_ea);
 			}
 		}
+		*/
 		return s;
 	}
 	

@@ -165,8 +165,9 @@ public class ExpenseDAO implements DBcrud{
 		return flag;
 	}
 	
-	// 특정 날짜 사이의 지출 리스트 반환
-	public List<ExpenseDTO> getDateData(String date1, String date2) {
+	// 현재 페이지 번호를 받아
+	// 기간 사이의 지출 리스트 반환 (20개 단위)
+	public List<ExpenseDTO> getDateData(String date1, String date2, int p) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

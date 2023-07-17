@@ -12,7 +12,8 @@ import stock.Service_st;
 import vo.TotalStockVO;
 
 public class Ui {
-
+	
+	/*
 	public static void mainUi() {
 		Scanner sc = new Scanner(System.in);
 		Service_ex e_serv = new Service_ex();
@@ -99,7 +100,7 @@ public class Ui {
 				int s_amount = sc.nextInt();
 				selectForm();
 				sc.nextLine();
-				s_serv.insertStock(m_code, s_amount);
+				//s_serv.insertStock(m_code, s_amount);
 				break;
 			case 2:
 				menu2();
@@ -127,6 +128,7 @@ public class Ui {
 			}
 		}
 	}
+	*/
 	
 	
 	public static void line(int cnt) {
@@ -163,6 +165,7 @@ public class Ui {
 	}
 	
 	public static void todayFixedCost() {
+		/*
 		Service_ex e_serv = new Service_ex();
 		ArrayList<String> f_names = e_serv.fixedCostCheck();
 		System.out.print("오늘 고정비 지출 내역은 [ ");
@@ -171,5 +174,6 @@ public class Ui {
 		}
 		System.out.print("] 입니다.");
 		System.out.println();
+		*/
 	}
 }
