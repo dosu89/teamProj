@@ -1,14 +1,13 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import DButil.DBcon;
 import DButil.DBcrud;
 import dto.ExpenseDTO;
 
@@ -172,21 +171,25 @@ public class ExpenseDAO implements DBcrud{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<ExpenseDTO> list = new ArrayList<>();
+		int firstPage = ((p-1) * 20);
 		
-		String query = "SELECT * FROM expense WHERE date(ex_date) BETWEEN ? AND ?;";
+		String query = "SELECT * FROM expenselist "
+						+"WHERE date(ex_date) BETWEEN ? AND ? "
+						+"ORDER BY ex_date DESC LIMIT ?, 20";
 		
 		try {
 			con = DButil.DBcon.getConn();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, date1);
 			pstmt.setString(2, date2);
+			pstmt.setInt(3, firstPage);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				if( rs != null ) {
 					ExpenseDTO dto = new ExpenseDTO();
 					dto.setEx_no(rs.getInt("ex_no"));
-					dto.setMa_code(rs.getString("ma_code"));
+					dto.setMa_code(rs.getString("ma_name"));
 					dto.setEx_cost(rs.getInt("ex_cost"));
 					dto.setEx_ea(rs.getInt("ex_ea"));
 					dto.setEx_date(rs.getTimestamp("ex_date").toLocalDateTime());
@@ -195,7 +198,7 @@ public class ExpenseDAO implements DBcrud{
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("데이터 반환 실패 : " + e.getMessage());
+			System.out.println("지출 기간 데이터 반환 실패 : " + e.getMessage());
 		} finally {
 			try {
 				if (rs != null)
@@ -209,5 +212,42 @@ public class ExpenseDAO implements DBcrud{
 			}
 		}
 		return list;
+	}
+	
+	// 두 기간 사이의 조회한 총 데이터 갯수 반환
+	public int getListCntBetweenDate(String date1, String date2) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int cnt = 0;
+		
+		String query = "SELECT count(*) FROM expense WHERE date(ex_date) BETWEEN ? AND ?";
+		
+		try {
+			con = DBcon.getConn();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, date1);
+			pstmt.setString(2, date2);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) 
+				cnt = rs.getInt(1);
+			
+		} catch (Exception e) {
+			System.out.println("지출 리스트 총 갯수 데이터 반환 실패 : " + e.getMessage());
+			
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e) {
+				System.out.println("연결 해제 실패 : " + e.getMessage());
+			}
+		}
+		return cnt;
 	}
 }

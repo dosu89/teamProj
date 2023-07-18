@@ -191,12 +191,10 @@ public class StockDAO implements DBcrud{
 		List<StockDTO> list = new ArrayList<>();
 		int firstPage = ((p-1) * 20);
 		
-		String query = "SELECT s.st_no, m.ma_name, s.st_ea, s.st_recDate, s.st_note" + 
-				" FROM stock s, material m" + 
-				" WHERE s.ma_code = m.ma_code AND date(s.st_recDate) BETWEEN ? AND ?" + 
-				" ORDER BY s.st_recDate DESC LIMIT ?, 20";
+		String query = "SELECT * FROM stocklist" + 
+				" WHERE date(st_recDate) BETWEEN ? AND ?" + 
+				" ORDER BY st_recDate DESC LIMIT ?, 20";
 		
-		//String query = "SELECT * FROM stock WHERE date(st_recDate) BETWEEN ? AND ? ORDER BY st_no DESC LIMIT ?, 20;";
 		
 		try {
 			con = DButil.DBcon.getConn();
@@ -209,11 +207,11 @@ public class StockDAO implements DBcrud{
 			while(rs.next()) {
 				if( rs != null ) {
 					StockDTO dto = new StockDTO();
-					dto.setSt_no(rs.getInt("s.st_no"));
-					dto.setMa_code(rs.getString("m.ma_name"));
-					dto.setSt_ea(rs.getInt("s.st_ea"));
-					dto.setSt_recDate(rs.getTimestamp("s.st_recDate").toLocalDateTime());
-					dto.setSt_note(rs.getString("s.st_note"));
+					dto.setSt_no(rs.getInt("st_no"));
+					dto.setMa_code(rs.getString("ma_name"));
+					dto.setSt_ea(rs.getInt("st_ea"));
+					dto.setSt_recDate(rs.getTimestamp("st_recDate").toLocalDateTime());
+					dto.setSt_note(rs.getString("st_note"));
 					list.add(dto);
 				}
 			}

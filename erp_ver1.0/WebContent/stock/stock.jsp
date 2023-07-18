@@ -64,6 +64,7 @@
 			<li class="aside-li nav-item"><a class="nav-link" href="totalstock">총 채고량</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="stockList">입/출 리스트</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="registStock">재고 등록</a></li>
+			<li class="aside-li nav-item"><a class="nav-link" href="stockCalc">생산 계산</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="StockOption">옵션</a></li>
 		</ul>
 	</aside>

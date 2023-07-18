@@ -1,15 +1,12 @@
 package expense;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import dao.ExpenseDAO;
 import dao.FixedCostDAO;
-import dao.MaterialDAO;
 import dto.ExpenseDTO;
 import dto.FixedCostDTO;
-import dto.MaterialDTO;
 import dto.StockDTO;
 import stock.Service_st;
 
@@ -125,11 +122,16 @@ public class Service_ex {
 	}
 	
 	// 특정 날짜 사이의 지출 리스트 보여주기
-	public void betweenDateList(String date1, String date2) {
+	public List<ExpenseDTO> expenseDateBTWList(String date1, String date2, int p) {
 		ExpenseDAO edao = new ExpenseDAO();
-		List<ExpenseDTO> eList = edao.getDateData(date1, date2);
-		for (ExpenseDTO e : eList) {
-			System.out.println(e);
-		}
+		List<ExpenseDTO> eList = edao.getDateData(date1, date2, p);
+		return eList;
+	}
+	
+	// 두 기간 사이의 재고 입출 자료 총 갯수 반환
+	public int getListCntBtwDate(String date1, String date2) {
+		ExpenseDAO sdao = new ExpenseDAO();
+		int cnt = sdao.getListCntBetweenDate(date1, date2);
+		return cnt;
 	}
 }

@@ -10,6 +10,8 @@ public class PageCheck {
 			page = "insertStock.jsp";
 		} else if(req.equals("opt")) {
 			page = "stockOption.jsp";
+		} else if(req.equals("calc")) {
+			page = "stockCalc.jsp";
 		} else {
 			page = "totalStock.jsp";
 		}

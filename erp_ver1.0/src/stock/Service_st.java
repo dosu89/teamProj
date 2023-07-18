@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.ProductDAO;
 import dao.StockDAO;
+import dto.RecipeDTO;
 import dto.StockDTO;
 import vo.StockOptionVO;
 import vo.TotalStockVO;
@@ -49,8 +51,8 @@ public class Service_st {
 			}
 		}
 		
-		// 두 기간 사이의 재고 입출력 리스트 보여주기
-		public List<StockDTO> stockDateList(String date1, String date2, int p) {
+		// 두 기간 사이의 재고 입출력 리스트 보여주기 ( 페이지 단위 )
+		public List<StockDTO> stockDateBTWList(String date1, String date2, int p) {
 			StockDAO sdao = new StockDAO();
 			List<StockDTO> eList = sdao.getStockDateData(date1, date2, p);
 			return eList;
@@ -92,5 +94,12 @@ public class Service_st {
 			
 			opt = sdao.getOption();
 			return opt;
+		}
+		
+		// 상품 레시피 리스트 가져오기
+		public List<RecipeDTO> getRecipeList() {
+			ProductDAO pdao = new ProductDAO();
+			List<RecipeDTO> rlist = pdao.getRecipeList();
+			return rlist;
 		}
 }

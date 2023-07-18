@@ -29,7 +29,7 @@ public class StockListServlet extends HttpServlet {
 		String date1 = DateCheck.setDate1(PreDate);
 		
 		Service_st s_serv = new Service_st();
-		List<StockDTO> slist = s_serv.stockDateList(date1, date2, pageNum);
+		List<StockDTO> slist = s_serv.stockDateBTWList(date1, date2, pageNum);
 		int cnt = s_serv.getListCntBtwDate(date1, date2);
 		
 		request.setAttribute("date2", date2);

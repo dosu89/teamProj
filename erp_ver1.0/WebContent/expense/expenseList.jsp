@@ -1,3 +1,4 @@
+<%@page import="util.PageDivide"%>
 <%@page import="dto.ExpenseDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="stock.Service_st"%>
@@ -14,6 +15,7 @@
 <title>Insert title here</title>
 <!-- CSS only -->
 <link href="css/bootstrap.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="js/jquery-3.7.0.js"></script>
 </head>
 <body>
 <%
@@ -42,7 +44,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="expense" items="${eList }">
+					<c:forEach var="expense" items="${elist }">
 						<tr>
 							<td>${expense.ex_no }</td>				
 							<td>${expense.ma_code }</td>				
@@ -103,7 +105,7 @@
 			type: "get",
 			dataType: "text",
 			success: function(data) {
-				location.href="stockList?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
+				location.href="expenseList?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
 			}
 		})
 	});
@@ -124,7 +126,7 @@
 			type: "get",
 			dataType: "text",
 			success: function(data) {
-				location.href="stockList?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
+				location.href="expenseList?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
 			}
 		})
 	});

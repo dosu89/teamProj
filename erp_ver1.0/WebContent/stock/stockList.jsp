@@ -35,6 +35,7 @@
 				<input type="date" name="date2" value="<%= date2 %>">
 			</div>
 		</div>
+		
 		<div class="row">
 			<table class="table table-striped">
 				<thead>
@@ -57,25 +58,29 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			
 		</div>
-		<div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups" onclick="pageNation(event)">
-			<div class="btn-group me-2" role="group" aria-label="First group">
-				<!-- 페이지 그룹의 시작이 1이면 이전 페이지 그룹 버튼 생략 -->
-				<c:if test="<%= startPage != 1 %>">
-					<button type="button" class="btn btn-primary" data-page="<%= startPage-5 %>">&lt</button>
-				</c:if>
-			</div>
-			<div class="btn-group me-2" role="group" aria-label="Second group">
-				<c:forEach var="i"  begin="<%= startPage %>" end="<%= endPage %>">
-					<button data-page="${i }" type="button" class="btn btn-primary">${i }</button>
-				</c:forEach>
-			</div>
-			<div class="btn-group" role="group" aria-label="Third group">
-				<!-- 페이지 그룹의 마지막과 마지막 페이지가 같으면 뒤의 페이지 그룹이 없으므로 생략 -->
-				<c:if test="<%= endPage !=  lastPage %>">
-					<button type="button" class="btn btn-primary" data-page="<%=startPage + 5 %>">&gt</button>
-				</c:if>
+		
+		<div class="row">
+			<div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups" onclick="pageNation(event)">
+				<div class="btn-group me-2" role="group" aria-label="First group">
+					<!-- 페이지 그룹의 시작이 1이면 이전 페이지 그룹 버튼 생략 -->
+					<c:if test="<%= startPage != 1 %>">
+						<button type="button" class="btn btn-primary" data-page="<%= startPage-5 %>">&lt</button>
+					</c:if>
+				</div>
+				
+				<div class="btn-group me-2" role="group" aria-label="Second group">
+					<c:forEach var="i"  begin="<%= startPage %>" end="<%= endPage %>">
+						<button data-page="${i }" type="button" class="btn btn-primary">${i }</button>
+					</c:forEach>
+				</div>
+				
+				<div class="btn-group" role="group" aria-label="Third group">
+					<!-- 페이지 그룹의 마지막과 마지막 페이지가 같으면 뒤의 페이지 그룹이 없으므로 생략 -->
+					<c:if test="<%= endPage !=  lastPage %>">
+						<button type="button" class="btn btn-primary" data-page="<%=startPage + 5 %>">&gt</button>
+					</c:if>
+				</div>
 			</div>
 		</div>
 	</div>

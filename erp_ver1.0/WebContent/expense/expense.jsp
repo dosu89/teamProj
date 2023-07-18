@@ -59,7 +59,7 @@
 	<aside class="container-fluid border shadow p-3  bg-body rounded">
 		<ul id="aside-ul" class="nav justify-content-center">
 			<li class="aside-li nav-item"><a class="nav-link" href="#">지출 등록</a></li>
-			<li class="aside-li nav-item"><a class="nav-link" href="#">지출 리스트</a></li>
+			<li class="aside-li nav-item"><a class="nav-link" href="stockList">지출 리스트</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="#">세부메뉴3</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="#">세부메뉴4</a></li>
 			<li class="aside-li nav-item"><a class="nav-link" href="#">세부메뉴5</a></li>
