@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class EncodingFilter implements Filter {
 
 	private static final long serialVersionUID = 1L;

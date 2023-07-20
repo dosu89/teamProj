@@ -8,7 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <!-- CSS only -->
-<link href="css/bootstrap.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link href="css/bootstrap.css" rel="stylesheet" >
+<script src="js/jquery.js"></script>
 <style>
 	* {
 		box-sizing: border-box;
@@ -28,6 +29,14 @@
         ;
 	}
 	
+	header {
+		grid-area: header;
+	}
+	
+	nav {
+		grid-area: nav;
+	}
+	
 	section {
 		grid-area: section;
 	}
@@ -35,18 +44,6 @@
 	aside {
 		grid-area : aside;
 	}
-
-	#aside-ul {
-		list-style: none;
-		margin : 0px;
-		padding : 0px;
-	}
-	
-	.aside-li {
-		text-align: center;
-		line-height: 100px;
-	}
-
 </style>
 </head>
 <body>
@@ -58,21 +55,12 @@
 %>
 <div id = "page">
 	<jsp:include page="../header.jsp" />
-	<jsp:include page="../nav.jsp" />
-	<aside class="container-fluid border shadow p-3  bg-body rounded">
-		<ul id="aside-ul" class="nav justify-content-center">
-			<li class="aside-li nav-item"><a class="nav-link" href="totalstock">총 채고량</a></li>
-			<li class="aside-li nav-item"><a class="nav-link" href="stockList">입/출 리스트</a></li>
-			<li class="aside-li nav-item"><a class="nav-link" href="registStock">재고 등록</a></li>
-			<li class="aside-li nav-item"><a class="nav-link" href="stockCalc">생산 계산</a></li>
-			<li class="aside-li nav-item"><a class="nav-link" href="StockOption">옵션</a></li>
-		</ul>
-	</aside>
+	<jsp:include page="nav.jsp" />
+	<jsp:include page="aside.jsp" />
 	<section class="container-fluid border shadow p-3  bg-body rounded">
 		<jsp:include page="${page }" />
 	</section>
 </div>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="js/bootstrap.bundle.js" ></script>
 </body>
 </html>

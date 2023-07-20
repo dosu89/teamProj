@@ -16,6 +16,9 @@ public class StockOptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		
 		OptionCheck optCheck = new OptionCheck();
 		String alOpt = optCheck.alramStockCheck();
 		int alNum = optCheck.alramStockNum();
@@ -26,6 +29,9 @@ public class StockOptionServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		
 		String alramOpt = request.getParameter("alramStock");
 		String alramNum_str = request.getParameter("alramNum");
 		int alramNum = 0;

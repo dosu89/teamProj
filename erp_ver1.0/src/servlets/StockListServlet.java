@@ -19,6 +19,9 @@ public class StockListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		
 		String page_str = request.getParameter("pageNum");
 		int pageNum = PageCheck.pageNumCheck(page_str);
 		

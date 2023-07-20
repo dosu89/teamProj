@@ -34,4 +34,10 @@ public class OptionCheck {
 			}
 			return result;
 		}
+		
+		public boolean getAlramOpt() {
+			Service_st st_serv = new Service_st();
+			boolean alOpt = st_serv.getStockOption().isAlramOpt();
+			return alOpt;
+		}
 }

@@ -13,8 +13,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link href="css/bootstrap.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="js/jquery-3.7.0.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet" >
+<script src="js/jquery.js"></script>
 </head>
 <body>
 <%
@@ -102,6 +102,7 @@
 		if(dateCheck()) {
 			alert("날짜 범위를 확인하세요.");
 			$('input[name="date1"]').val($('input[name="date2"]').val());
+			return;
 		}
 			
 		$.ajax({
@@ -118,11 +119,13 @@
 		if(dateCheck()) {
 			alert("날짜 범위를 확인하세요.");
 			$('input[name="date1"]').val($('input[name="date2"]').val());
+			return;
 		}
 		
 		if (todayCheck()) {
 			alert("오늘 날짜를 넘을 수 없습니다.");
 			$('input[name="date2"]').val(new Date().toISOString().substring(0, 10));
+			return;
 		}
 		
 		$.ajax({
@@ -151,6 +154,6 @@
 			return true;
 	}
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="js/bootstrap.bundle.js" ></script>
 </body>
 </html>

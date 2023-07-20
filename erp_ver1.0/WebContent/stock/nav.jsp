@@ -6,24 +6,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- CSS only -->
-<link href="css/bootstrap.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link href="css/bootstrap.css" rel="stylesheet" >
+ <script src="js/jquery.js"></script>
 <style>
-	#main-nav {
-		grid-area : nav;
-	}
-	
 	.nav-item {
 		width:150px;
-		text-align: center;
 	}
 	
 </style>
 </head>
 <body>
 	<nav id="main-nav">
-		<ul class="nav nav-tabs justify-content-center">
+		<ul class="nav nav-tabs justify-content-center text-center">
 		  <li class="nav-item">
-		    <a class="nav-link active" aria-current="page" href="main.jsp">Home</a>
+		    <a class="nav-link" aria-current="page" href="main">Home</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="#">매출</a>
@@ -31,17 +27,16 @@
 		  <li class="nav-item dropdown">
 		    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="totalstock" role="button" aria-expanded="false">지출</a>
 		    <ul class="dropdown-menu">
-		    	<li><a class="dropdown-item" href="#">지출 등록</a></li>
+		    	<li><a class="dropdown-item" href="#">준비중</a></li>
 		    	<li><a class="dropdown-item" href="expenseList"> 지출 리스트</a></li>
-		   		<li><a class="dropdown-item" href="#">??</a></li>
 		    </ul>
 		  </li>
 		  <li class="nav-item dropdown">
-		    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="totalstock" role="button" aria-expanded="false">재고</a>
+		    <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="totalstock" role="button" aria-expanded="false">재고</a>
 		    <ul class="dropdown-menu">
 		      <li><a class="dropdown-item" href="totalstock">총 재고량</a></li>
 		      <li><a class="dropdown-item" href="stockList">재고 입/출 리스트</a></li>
-		      <li><a class="dropdown-item" href="registStock">재고 등록</a></li>
+		      <li><a class="dropdown-item" href="insertStock">재고 등록</a></li>
 		      <li><a class="dropdown-item" href="stockCalc">생산 계산</a></li>
 		      <li><a class="dropdown-item" href="StockOption">옵션</a></li>
 		    </ul>
@@ -49,13 +44,11 @@
 		  		  <li class="nav-item dropdown">
 		    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="totalstock" role="button" aria-expanded="false">상품</a>
 		    <ul class="dropdown-menu">
-		      <li><a class="dropdown-item" href="#">상품 등록</a></li>
-		      <li><a class="dropdown-item" href="stockList">상품 관리</a></li>
+		      <li><a class="dropdown-item" href="#">준비중</a></li>
 		    </ul>
 		  </li>
 		</ul>
 	</nav>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="js/bootstrap.bundle.js" ></script>
 </body>
 </html>

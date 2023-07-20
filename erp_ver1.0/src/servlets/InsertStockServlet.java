@@ -14,7 +14,17 @@ import stock.Service_st;
 public class InsertStockServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		
+		request.getRequestDispatcher("stock/stock.jsp?req=reg").forward(request, response);;
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		
 		String ma_code = request.getParameter("ma_code");
 		String st_ea_str = request.getParameter("st_ea");
 		int st_ea = Integer.parseInt(st_ea_str);
@@ -25,5 +35,4 @@ public class InsertStockServlet extends HttpServlet {
 		
 		response.sendRedirect("stockList");
 	}
-
 }

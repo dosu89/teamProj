@@ -11,4 +11,5 @@ public interface DBcrud {
 	public boolean update(Object dto);
 	
 	public boolean dalete(Object dto);
+	
 }
