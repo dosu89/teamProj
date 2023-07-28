@@ -1,6 +1,6 @@
 <%@page import="util.OptionCheck"%>
-<%@page import="stock.Service_st"%>
-<%@page import="vo.TotalStockVO"%>
+<%@page import="service.Service_st"%>
+<%@page import="vos.TotalStockVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,13 +34,17 @@
 	}
 	
 	form > select, input, textarea, span {
-		margin-bottom : 20px;
 		font-size: 30px;
 	}
 	
 </style>
 </head>
 <body>
+<%
+	String ex_ea = request.getParameter("ea");
+		
+	pageContext.setAttribute("ea", ex_ea);
+%>
 	<div id="regStock">
 		<h2 class="fw-bold">재고 등록</h2>
 		<br>
@@ -52,7 +57,7 @@
 			</select><br>
 			<div class="input-group input-group-lg">
 				<span class="input-group-text" id="inputGroup-sizing-lg">수량</span>
-				<input type="number" class="form-control" name="st_ea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="수량을 입력하세요."><br>
+				<input type="number" class="form-control" name="st_ea" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="수량을 입력하세요." value="${ea }"><br>
 			</div>
 			<br>
 			<div class="input-group">
@@ -64,6 +69,13 @@
 		</form>
 	</div>
 <script>
+
+	window.onload = function() {
+		const ma_code = new URLSearchParams(location.search).get('name');
+		if(ma_code != null)
+			$('select[name="ma_code"]').val(ma_code);
+	}
+
 	function inputCheck() {
 		let form = document.insertForm;
 		

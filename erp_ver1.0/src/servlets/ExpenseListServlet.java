@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.ExpenseDTO;
-import expense.Service_ex;
+import service.Service_ex;
 import util.DateCheck;
 import util.PageCheck;
 
@@ -34,6 +34,7 @@ public class ExpenseListServlet extends HttpServlet {
 		Service_ex e_serv = new Service_ex();
 		
 		List<ExpenseDTO> eList = e_serv.expenseDateBTWList(date1, date2, pageNum);
+		
 		int cnt = e_serv.getListCntBtwDate(date1, date2);
 		
 		request.setAttribute("date2", date2);
@@ -43,5 +44,4 @@ public class ExpenseListServlet extends HttpServlet {
 		request.setAttribute("elist", eList);
 		request.getRequestDispatcher("expense/expense.jsp?req=list").forward(request, response);
 	}
-
 }

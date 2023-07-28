@@ -58,10 +58,10 @@
 					<div class="col-sm-3 input-group mb-3">
 						<span class="input-group-text" id="addon-wrapping">준비중</span>
 						<select class="form-select" id="inputGroup-sizing-default" name="products" aria-label="Default select example">
-							  <option selected>상품</option>
-							  <option value="PR001">아메리카노</option>
-							  <option value="PR002">카페라떼</option>
-							  <option value="PR003">바닐라라떼</option>
+							  <option selected>계산식</option>
+							  <option value="PR001">func1</option>
+							  <option value="PR002">func2</option>
+							  <option value="PR003">func3</option>
 						</select>
 					</div>
 				</div>

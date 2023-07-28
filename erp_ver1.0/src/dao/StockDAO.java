@@ -9,12 +9,11 @@ import java.util.List;
 
 import DButil.DBcon;
 import DButil.DBconnect;
-import DButil.DBcrud;
 import dto.StockDTO;
-import vo.StockOptionVO;
-import vo.TotalStockVO;
+import vos.StockOptionVO;
+import vos.TotalStockVO;
 
-public class StockDAO implements DBcrud{
+public class StockDAO implements IERP_DAO{
 
 	@Override
 	public boolean insert(Object dto) {
@@ -56,37 +55,30 @@ public class StockDAO implements DBcrud{
 		return flag;
 	}
 	
-	// 현재 페이지를 번호를 받아
-	// 20개 단위로 모은 재고 입/출력 리스트 반환
 	@Override
-	public List<Object> getData(int p) {
+	public List<Object> getData() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Object> list = new ArrayList<>();
 		
-		int firstPage = ((p-1) * 20);
 		
-		String query = "SELECT s.st_no, m.ma_name, s.st_ea, s.st_recDate, s.st_note" + 
-				" FROM stock s LEFT join  material m" + 
-				" on s.ma_code = m.ma_code" + 
-				" ORDER BY st_no DESC LIMIT ?, 20";
+		String query = "SELECT * FROM stock";
 		
 		try {
 			DBconnect connect = new DBconnect();
 			con = connect.getConn();
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, firstPage);
 			rs = pstmt.executeQuery();
 			
 			if (rs != null) {
 				while(rs.next()) {
 					StockDTO dto = new StockDTO();
-					dto.setSt_no(rs.getInt("s.st_no"));
-					dto.setMa_code(rs.getString("m.ma_name"));
-					dto.setSt_ea(rs.getInt("s.st_ea"));
-					dto.setSt_recDate(rs.getTimestamp("s.st_recDate").toLocalDateTime());
-					dto.setSt_note(rs.getString("s.st_note"));
+					dto.setSt_no(rs.getInt("st_no"));
+					dto.setMa_code(rs.getString("ma_name"));
+					dto.setSt_ea(rs.getInt("st_ea"));
+					dto.setSt_recDate(rs.getTimestamp("st_recDate").toLocalDateTime());
+					dto.setSt_note(rs.getString("st_note"));
 					list.add(dto);
 				}
 			}

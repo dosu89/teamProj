@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DButil.DBcon;
-import DButil.DBcrud;
 import dto.FixedCostDTO;
 
-public class FixedCostDAO implements DBcrud{
+public class FixedCostDAO implements IERP_DAO{
 
 	@Override
 	public boolean insert(Object dto) {
@@ -46,7 +45,7 @@ public class FixedCostDAO implements DBcrud{
 	}
 
 	@Override
-	public List<Object> getData(int p) {
+	public List<Object> getData() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

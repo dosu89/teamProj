@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import stock.Service_st;
+import service.Service_st;
 import util.OptionCheck;
-import vo.TotalStockVO;
+import vos.TotalStockVO;
 
 @WebServlet("/totalstock")
 public class TotalStockServlet extends HttpServlet {

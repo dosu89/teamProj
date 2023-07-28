@@ -1,7 +1,7 @@
 package util;
 
-import stock.Service_st;
-import vo.StockOptionVO;
+import service.Service_st;
+import vos.StockOptionVO;
 
 public class OptionCheck {
 

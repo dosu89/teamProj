@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DButil.DBcon;
-import DButil.DBcrud;
 import dto.MaterialDTO;
 
-public class MaterialDAO implements DBcrud{
+public class MaterialDAO implements IERP_DAO{
 
 	@Override
 	public boolean insert(Object dto) {
@@ -26,7 +25,7 @@ public class MaterialDAO implements DBcrud{
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, m.getMa_code());
 			pstmt.setString(2, m.getMa_name());
-			pstmt.setString(3, m.getMa_group());
+			pstmt.setInt(3, m.getMa_cost());
 			int result = pstmt.executeUpdate();
 			
 			if(result == 1) {
@@ -50,7 +49,7 @@ public class MaterialDAO implements DBcrud{
 	}
 
 	@Override
-	public List<Object> getData(int p) {
+	public List<Object> getData() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -68,7 +67,7 @@ public class MaterialDAO implements DBcrud{
 					MaterialDTO dto = new MaterialDTO();
 					dto.setMa_code(rs.getString("ma_code"));
 					dto.setMa_name(rs.getString("ma_name"));
-					dto.setMa_group(rs.getString("ma_group"));
+					dto.setMa_cost(rs.getInt("ma_cost"));
 					list.add(dto);
 				}
 			}
@@ -96,13 +95,13 @@ public class MaterialDAO implements DBcrud{
 		MaterialDTO m = (MaterialDTO)dto;
 		boolean flag = false;
 		
-		String query = "UPDATE material SET ma_name = ?, ma_group = ? WHERE ma_code = ?";
+		String query = "UPDATE material SET ma_name = ?, ma_cost = ? WHERE ma_code = ?";
 		
 		try {
 			con = DButil.DBcon.getConn();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, m.getMa_name());
-			pstmt.setString(2, m.getMa_group());
+			pstmt.setInt(2, m.getMa_cost());
 			pstmt.setString(3, m.getMa_code());
 			int result = pstmt.executeUpdate();
 			

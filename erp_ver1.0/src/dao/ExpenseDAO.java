@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DButil.DBcon;
-import DButil.DBcrud;
 import dto.ExpenseDTO;
 
-public class ExpenseDAO implements DBcrud{
+public class ExpenseDAO implements IERP_DAO{
 
 	@Override
 	public boolean insert(Object dto) {
@@ -51,7 +50,7 @@ public class ExpenseDAO implements DBcrud{
 	}
 
 	@Override
-	public List<Object> getData(int p) {
+	public List<Object> getData() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -173,7 +172,7 @@ public class ExpenseDAO implements DBcrud{
 		List<ExpenseDTO> list = new ArrayList<>();
 		int firstPage = ((p-1) * 20);
 		
-		String query = "SELECT * FROM expenselist "
+		String query = "SELECT * FROM expense "
 						+"WHERE date(ex_date) BETWEEN ? AND ? "
 						+"ORDER BY ex_date DESC LIMIT ?, 20";
 		
@@ -189,7 +188,7 @@ public class ExpenseDAO implements DBcrud{
 				if( rs != null ) {
 					ExpenseDTO dto = new ExpenseDTO();
 					dto.setEx_no(rs.getInt("ex_no"));
-					dto.setMa_code(rs.getString("ma_name"));
+					dto.setMa_code(rs.getString("ma_code"));
 					dto.setEx_cost(rs.getInt("ex_cost"));
 					dto.setEx_ea(rs.getInt("ex_ea"));
 					dto.setEx_date(rs.getTimestamp("ex_date").toLocalDateTime());

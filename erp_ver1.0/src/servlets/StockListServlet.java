@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.StockDTO;
-import stock.Service_st;
+import service.Service_st;
 import util.DateCheck;
 import util.PageCheck;
 

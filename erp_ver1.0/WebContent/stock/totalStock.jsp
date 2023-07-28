@@ -1,4 +1,4 @@
-<%@page import="vo.TotalStockVO"%>
+<%@page import="vos.TotalStockVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

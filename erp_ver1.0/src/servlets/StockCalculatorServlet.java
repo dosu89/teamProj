@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 import dto.RecipeDTO;
-import stock.Service_st;
+import service.Service_st;
 
 @WebServlet("/stockCalc")
 public class StockCalculatorServlet extends HttpServlet {

@@ -1,7 +1,7 @@
 <%@page import="util.PageDivide"%>
 <%@page import="dto.ExpenseDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="stock.Service_st"%>
+<%@page import="service.Service_st"%>
 <%@page import="dto.StockDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

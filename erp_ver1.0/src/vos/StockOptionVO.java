@@ -1,4 +1,4 @@
-package vo;
+package vos;
 
 public class StockOptionVO {
 	private boolean alramOpt;

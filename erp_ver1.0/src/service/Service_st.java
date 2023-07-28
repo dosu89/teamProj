@@ -1,15 +1,15 @@
-package stock;
+package service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.ProductDAO;
+import dao.ProductsDAO;
 import dao.StockDAO;
 import dto.RecipeDTO;
 import dto.StockDTO;
-import vo.StockOptionVO;
-import vo.TotalStockVO;
+import vos.StockOptionVO;
+import vos.TotalStockVO;
 
 public class Service_st {
 
@@ -34,9 +34,9 @@ public class Service_st {
 			}
 		}
 		
-		public List<StockDTO> selectAllStock(int p) {
+		public List<StockDTO> selectAllStock() {
 			StockDAO dao = new StockDAO();
-			List<Object> list = dao.getData(p);
+			List<Object> list = dao.getData();
 			@SuppressWarnings("unchecked")
 			List<StockDTO> slist = (List<StockDTO>)(Object)list;
 			return slist;
@@ -98,7 +98,7 @@ public class Service_st {
 		
 		// 상품 레시피 리스트 가져오기
 		public List<RecipeDTO> getRecipeList() {
-			ProductDAO pdao = new ProductDAO();
+			ProductsDAO pdao = new ProductsDAO();
 			List<RecipeDTO> rlist = pdao.getRecipeList();
 			return rlist;
 		}

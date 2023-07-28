@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 import dto.ExpenseDTO;
 import dto.StockDTO;
-import expense.Service_ex;
-import stock.Service_st;
-import vo.TotalStockVO;
+import service.Service_ex;
+import service.Service_st;
+import vos.TotalStockVO;
 
 public class Ui {
 	

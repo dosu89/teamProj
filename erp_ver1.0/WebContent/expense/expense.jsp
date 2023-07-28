@@ -1,3 +1,4 @@
+<%@page import="util.PageCheck"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -46,8 +47,10 @@
 </head>
 <body>
 <%
+	String reqPage = (String)request.getParameter("req");
+	String includeP = PageCheck.expensePageCheck(reqPage);
 	
-	
+	pageContext.setAttribute("page", includeP);
 %>
 <div id = "page">
 	<jsp:include page="../header.jsp" />
@@ -55,7 +58,7 @@
 	<jsp:include page="aside.jsp" />
 
 	<section class="container-fluid border shadow p-3  bg-body rounded">
-		<jsp:include page="expenseList.jsp" />
+		<jsp:include page="${page }" />
 	</section>
 </div>
 <script src="js/bootstrap.bundle.js" ></script>

@@ -27,7 +27,7 @@
 		  <li class="nav-item dropdown">
 		    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="totalstock" role="button" aria-expanded="false">지출</a>
 		    <ul class="dropdown-menu">
-		    	<li><a class="dropdown-item" href="#">준비중</a></li>
+		    	<li><a class="dropdown-item" href="InsertExpnese">지출 등록</a></li>
 		    	<li><a class="dropdown-item" href="expenseList"> 지출 리스트</a></li>
 		    </ul>
 		  </li>

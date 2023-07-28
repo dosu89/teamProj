@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DButil.DBcon;
-import DButil.DBcrud;
 import dto.EmployeeDTO;
 import dto.ExpenseDTO;
 
-public class EmployeeDAO implements DBcrud{
+public class EmployeeDAO implements IERP_DAO{
 
 	@Override
 	public boolean insert(Object dto) {
@@ -51,7 +50,7 @@ public class EmployeeDAO implements DBcrud{
 	}
 
 	@Override
-	public List<Object> getData(int p) {
+	public List<Object> getData() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

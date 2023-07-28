@@ -3,7 +3,7 @@ package dto;
 public class MaterialDTO {
 	private String ma_code;
 	private String ma_name;
-	private String ma_group;
+	private int ma_cost;
 	
 	public String getMa_code() {
 		return ma_code;
@@ -17,12 +17,10 @@ public class MaterialDTO {
 	public void setMa_name(String ma_name) {
 		this.ma_name = ma_name;
 	}
-	public String getMa_group() {
-		return ma_group;
+	public int getMa_cost() {
+		return ma_cost;
 	}
-	public void setMa_group(String ma_group) {
-		this.ma_group = ma_group;
+	public void setMa_cost(int ma_cost) {
+		this.ma_cost = ma_cost;
 	}
-	
-	
 }

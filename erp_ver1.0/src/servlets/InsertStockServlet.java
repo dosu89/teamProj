@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import stock.Service_st;
+import service.Service_st;
 
 @WebServlet("/insertStock")
 public class InsertStockServlet extends HttpServlet {
