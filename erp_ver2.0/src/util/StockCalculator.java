@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import dto.CalcStockDTO;
 import dto.RecipeDTO;
 import services.Service_st;
@@ -12,12 +14,14 @@ import vos.TotalStockVO;
 
 public class StockCalculator {
 	
-	public static List<CalcStockDTO> getCalc(String[] products) {
+	// 
+	public static JSONObject getCalc(String[] products) {
 		Service_st st_serv = new Service_st();
 		List<TotalStockVO> slist = st_serv.getTotalList();
 		List<RecipeDTO> rlist = st_serv.getRecipeList();
 		Map<String, Integer> smap = new HashMap<>();
 		List<CalcStockDTO> clist = new ArrayList<>();
+		JSONObject jobj = new JSONObject();
 		
 		
 		slist = changeNameToCode(slist);
@@ -46,7 +50,9 @@ public class StockCalculator {
 			System.out.println("vo : "  + vo);
 		}
 		clist = changeCodeToName(clist);
-		return clist;
+		jobj.put("clist", clist);
+		jobj.put("slist", slist);
+		return jobj;
 	}
 	
 	// 리스트에 담긴 재료 이름을 재료 코드로 변경

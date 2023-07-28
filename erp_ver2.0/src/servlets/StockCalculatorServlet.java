@@ -10,13 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
+import org.json.JSONObject;
 
-import dto.CalcStockDTO;
 import dto.RecipeDTO;
 import services.Service_st;
 import util.StockCalculator;
-import vos.TotalStockVO;
 
 @WebServlet("/stockCalc")
 public class StockCalculatorServlet extends HttpServlet {
@@ -38,20 +36,14 @@ public class StockCalculatorServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-		Service_st st_serv = new Service_st();
 		
 		String[] products = request.getParameterValues("products");
 		
-		List<CalcStockDTO> clist = StockCalculator.getCalc(products);
-		List<TotalStockVO> slist = st_serv.getTotalList();
 		
 		PrintWriter out = response.getWriter();
+		JSONObject jobj = StockCalculator.getCalc(products);
 		
-		JSONArray jarray = new JSONArray(clist);
-		JSONArray jarray2 = new JSONArray(slist);
-		
-		System.out.println(jarray);
-		out.print(jarray);
-		out.print(jarray2);
+		out.print(jobj);
+		//out.print(jarray2);
 	}
 }
