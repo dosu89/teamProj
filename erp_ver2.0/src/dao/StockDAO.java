@@ -228,11 +228,7 @@ public class StockDAO implements IERP_DAO{
 		ResultSet rs = null;
 		List<TotalStockVO> list = new ArrayList<>();
 		
-		String query = "SELECT m.ma_name, SUM(s.st_ea) " + 
-				"FROM stock s , material m " + 
-				"WHERE s.ma_code = m.ma_code " + 
-				"GROUP BY s.ma_code " + 
-				"ORDER BY st_recDate DESC";
+		String query = "SELECT * FROM totalstock";
 		
 		try {
 			con = DBcon.getConn();

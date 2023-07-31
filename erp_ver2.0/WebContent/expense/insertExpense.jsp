@@ -20,8 +20,11 @@
 	if(confirm != null) {
 %>
 		<script>
-			if(confirm("재고 등록도 하시겠습니까?"))
+			if(confirm("재고 등록도 하시겠습니까?")) {
 				location.href="insertStock?name=${code}&ea=${ea}";
+			} else {
+				location.href="expenseList";
+			}
 		</script>
 <%		
 	}

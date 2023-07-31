@@ -46,10 +46,9 @@ public class StockCalculator {
 		}
 		
 		slist = totalStockList(smap, slist);
-		for(TotalStockVO vo : slist) {
-			System.out.println("vo : "  + vo);
-		}
-		clist = changeCodeToName(clist);
+		slist = changeMaCodeToName(slist);
+		
+		clist = changePrCodeToName(clist);
 		jobj.put("clist", clist);
 		jobj.put("slist", slist);
 		return jobj;
@@ -63,7 +62,16 @@ public class StockCalculator {
 		return slist;
 	}
 	
-	public static List<CalcStockDTO> changeCodeToName(List<CalcStockDTO> clist) {
+	// 리스트에 담긴 재료 코드를 재료 이름으로 변경
+	public static List<TotalStockVO> changeMaCodeToName(List<TotalStockVO> slist) {
+		for(TotalStockVO vo : slist) {
+			vo.setMa_name(NameCheck.MaCodeToName(vo.getMa_name()));
+		}
+		return slist;
+	}
+	
+	// 리스트에 담긴 상품 코드를 재료 이름으로 변경
+	public static List<CalcStockDTO> changePrCodeToName(List<CalcStockDTO> clist) {
 		for(CalcStockDTO dto : clist) {
 			dto.setPr_name(NameCheck.PrCodeToName(dto.getPr_name()));
 		}

@@ -29,7 +29,7 @@
 				<c:forEach var="total_s" items="${alist }">
 					<tr>
 						<c:choose>
-							<c:when test="${total_s.totalEa < alNum }">
+							<c:when test="${total_s.totalEa <= alNum }">
 								<td class="table-danger">${total_s.ma_name }</td>
 								<td class="table-danger">${total_s.totalEa }</td>
 							</c:when>

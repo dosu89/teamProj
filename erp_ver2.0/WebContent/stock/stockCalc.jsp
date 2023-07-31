@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row text-center mb-5">
+		<div class="row text-center mb-5 mt-5">
 			<h2>제품 생산 계산</h2>
 		</div>
 		<div class="row">
@@ -42,7 +42,7 @@
 			
 	
 		</div>
-		<div class="row justify-content-center mt-5 mb-5">
+		<div class="row justify-content-center mt-3 mb-5">
 			<div class="col-sm-1">
 				<button type="button" class="btn btn-primary" onclick="calc()">계산</button>
 			</div>

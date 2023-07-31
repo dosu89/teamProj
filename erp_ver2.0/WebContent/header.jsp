@@ -31,7 +31,7 @@
 		<div class="row">
 			<div id="liveAlertPlaceholder" class="col-sm-2"></div>
 			<div class="col-sm-8">
-				<h1>ERP System  [ver 1.0]</h1>
+				<h1>ERP System  [ver 2.0]</h1>
 			</div>
 				<div class="col-sm-2">
 				 	<div id="user-profile" tabindex="0">
@@ -45,7 +45,7 @@
 <%
 	if (opt) {
 		for(TotalStockVO vo : alist ) {
-			if(vo.getTotalEa() < alNum) {
+			if(vo.getTotalEa() <= alNum) {
 		%>
 			<script>
 				$("#liveAlertPlaceholder").append(

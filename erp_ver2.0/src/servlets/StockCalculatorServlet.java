@@ -44,6 +44,5 @@ public class StockCalculatorServlet extends HttpServlet {
 		JSONObject jobj = StockCalculator.getCalc(products);
 		
 		out.print(jobj);
-		//out.print(jarray2);
 	}
 }
