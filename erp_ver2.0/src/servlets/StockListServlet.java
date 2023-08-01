@@ -18,7 +18,7 @@ import util.PageCheck;
 public class StockListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		
@@ -34,31 +34,6 @@ public class StockListServlet extends HttpServlet {
 		Service_st s_serv = new Service_st();
 		List<StockDTO> slist = s_serv.stockDateBTWList(date1, date2, pageNum);
 		int cnt = s_serv.getListCntBtwDate(date1, date2);
-		
-		
-		request.setAttribute("date2", date2);
-		request.setAttribute("date1", date1);
-		request.setAttribute("currPage", pageNum);
-		request.setAttribute("totalCnt", cnt);
-		request.setAttribute("slist", slist);
-		request.setAttribute("page", "stockList.jsp");
-		request.getRequestDispatcher("stock/stock.jsp").forward(request, response);
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
-		request.setCharacterEncoding("utf-8");
-		
-		String page_str = request.getParameter("pageNum");
-		int pageNum = PageCheck.pageNumCheck(page_str);
-		
-		String date1 = request.getParameter("date1");
-		String date2 = request.getParameter("date2");
-		
-		Service_st s_serv = new Service_st();
-		List<StockDTO> slist = s_serv.stockDateBTWList(date1, date2, pageNum);
-		int cnt = s_serv.getListCntBtwDate(date1, date2);
-		
 		
 		request.setAttribute("date2", date2);
 		request.setAttribute("date1", date1);
