@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지출 등록</title>
 <link href="css/bootstrap.css" rel="stylesheet" >
 <script src="js/jquery.js"></script>
 <style>

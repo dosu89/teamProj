@@ -48,12 +48,6 @@
 </style>
 </head>
 <body>
-<%
-	String req = request.getParameter("req");
-	String includeP = PageCheck.expensePageCheck(req);
-	
-	pageContext.setAttribute("page", includeP);
-%>
 <div id = "page">
 	<jsp:include page="../header.jsp" />
 	<jsp:include page="nav.jsp" />

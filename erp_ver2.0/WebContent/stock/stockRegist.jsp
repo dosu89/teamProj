@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>재고 등록</title>
 <!-- CSS only -->
 <link href="css/bootstrap.css" rel="stylesheet" >
 <script src="js/jquery.js"></script>
@@ -16,7 +16,7 @@
 		align-items: center;
 	}
 
-	#regStock  h2 {
+	#regStock >  h2 {
 		text-align: center;
 		font-size: 40px;
 		width: 800px;

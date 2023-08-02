@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.ExpenseDTO;
-import services.Service_ex;
-import util.DateCheck;
+import dto.StockDTO;
+import services.Service_st;
+import util.MakeData;
 import util.PageCheck;
 
-@WebServlet("/expenseList")
-public class ExpenseListServlet extends HttpServlet {
+@WebServlet("/stocks")
+public class StockSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		
@@ -28,20 +28,19 @@ public class ExpenseListServlet extends HttpServlet {
 		String PreDate = request.getParameter("date1");
 		String afDate = request.getParameter("date2");
 		
-		String date2 = DateCheck.setDate2(afDate);
-		String date1 = DateCheck.setDate1(PreDate);
+		String date2 = MakeData.setDate2(afDate);
+		String date1 = MakeData.setDate1(PreDate);
 		
-		Service_ex e_serv = new Service_ex();
-		
-		List<ExpenseDTO> eList = e_serv.expenseDateBTWList(date1, date2, pageNum);
-		
-		int cnt = e_serv.getListCntBtwDate(date1, date2);
+		Service_st s_serv = new Service_st();
+		List<StockDTO> slist = s_serv.stockDateBTWList(date1, date2, pageNum);
+		int cnt = s_serv.getListCntBtwDate(date1, date2);
 		
 		request.setAttribute("date2", date2);
 		request.setAttribute("date1", date1);
 		request.setAttribute("currPage", pageNum);
 		request.setAttribute("totalCnt", cnt);
-		request.setAttribute("elist", eList);
-		request.getRequestDispatcher("expense/expense.jsp?req=list").forward(request, response);
+		request.setAttribute("slist", slist);
+		request.setAttribute("page", "stockSelect.jsp");
+		request.getRequestDispatcher("stock/stock.jsp").forward(request, response);
 	}
 }

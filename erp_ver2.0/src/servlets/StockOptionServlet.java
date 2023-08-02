@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import services.Service_st;
 import util.OptionCheck;
 
-@WebServlet("/StockOption")
+@WebServlet("/stock-o")
 public class StockOptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

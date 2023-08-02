@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지출 리스트</title>
 <!-- CSS only -->
 <link href="css/bootstrap.css" rel="stylesheet" >
 <script src="js/jquery.js"></script>
@@ -83,11 +83,11 @@
 	function pageNation(e) {
 		if(e.target.tagName == "BUTTON") {
 			$.ajax({
-				url: "stockList",
+				url: "expenses",
 				type: "get",
 				dataType: "text",
 				success: function(data) {
-					location.href="expenseList?pageNum="+e.target.dataset.page+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
+					location.href="expenses?pageNum="+e.target.dataset.page+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
 				}
 			})
 		}
@@ -100,11 +100,11 @@
 		}
 			
 		$.ajax({
-			url: "stockList",
+			url: "expenses",
 			type: "get",
 			dataType: "text",
 			success: function(data) {
-				location.href="expenseList?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
+				location.href="expenses?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
 			}
 		})
 	});
@@ -121,11 +121,11 @@
 		}
 		
 		$.ajax({
-			url: "stockList",
+			url: "expenses",
 			type: "get",
 			dataType: "text",
 			success: function(data) {
-				location.href="expenseList?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
+				location.href="expenses?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
 			}
 		})
 	});

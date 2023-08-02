@@ -3,11 +3,12 @@ package services;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.json.JSONArray;
+
 import dao.ExpenseDAO;
 import dao.FixedCostDAO;
 import dto.ExpenseDTO;
 import dto.FixedCostDTO;
-import dto.StockDTO;
 import util.NameCheck;
 
 
@@ -48,24 +49,6 @@ public class Service_ex {
 			System.out.println("삭제 완료");
 	}
 	
-	// 오늘 날짜와 고정비 입력 날짜 체크 후 당일 고정비 목록 반환
-	/*
-	public ArrayList<String> fixedCostCheck() {
-		FixedCostDAO dao = new FixedCostDAO();
-		LocalDateTime today = LocalDateTime.now();
-		int day = today.getDayOfMonth();
-		@SuppressWarnings("unchecked")
-		List<FixedCostDTO> fList = (List<FixedCostDTO>)(Object)dao.getData();
-		ArrayList<String> f_names = new ArrayList<>();
-		for (FixedCostDTO f : fList) {
-			if(f.getFi_date() == day) {
-				f_names.add(f.getFi_name());
-			}
-		}
-		return f_names;
-	}
-	*/
-	
 	// 특정 날짜 사이의 지출 리스트 보여주기
 	// 페이지를 입력하여 20개 단위의 데이터 반환
 	public List<ExpenseDTO> expenseDateBTWList(String date1, String date2, int p) {
@@ -103,4 +86,13 @@ public class Service_ex {
 		}
 		return list;
 	}
+	
+	// 고정비 리스트 DAO에서 가져와서 리스트 반환
+	public List<FixedCostDTO> getFixedCostList() {
+		FixedCostDAO fdao = new FixedCostDAO();
+		@SuppressWarnings("unchecked")
+		List<FixedCostDTO> flist = (List<FixedCostDTO>)(Object)fdao.getData();
+		return flist;
+	}
+	
 }

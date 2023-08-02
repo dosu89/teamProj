@@ -11,20 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 import services.Service_ex;
 import util.NameCheck;
 
-@WebServlet("/InsertExpnese")
-public class InsertExpneseServlet extends HttpServlet {
+@WebServlet("/expense")
+public class ExpenseRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String ma_code = request.getParameter("ma_name");
+		
+		request.setAttribute("page", "expenseRegist.jsp");
 		if(NameCheck.MaNameCheck(ma_code)) {
 			request.setAttribute("code",NameCheck.MaNameToCode(ma_code) );
 			request.setAttribute("ea",request.getParameter("ex_ea") );
-			request.getRequestDispatcher("expense/expense.jsp?req=reg&confirm=1").forward(request, response);
+			request.getRequestDispatcher("expense/expense.jsp?confirm=1").forward(request, response);
 			return;
 		}
-		request.getRequestDispatcher("expense/expense.jsp?req=reg").forward(request, response);
+		
+		request.getRequestDispatcher("expense/expense.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

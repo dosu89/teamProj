@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>재고 입/출 리스트</title>
 <link href="css/bootstrap.css" rel="stylesheet" >
 <script src="js/jquery.js"></script>
 </head>
@@ -91,7 +91,7 @@
 				type: "get",
 				dataType: "text",
 				success: function(data) {
-					location.href="stockList?pageNum="+e.target.dataset.page+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
+					location.href="stocks?pageNum="+e.target.dataset.page+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
 				}
 			})
 		}
@@ -109,7 +109,7 @@
 			type: "get",
 			dataType: "text",
 			success: function(data) {
-				location.href="stockList?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
+				location.href="stocks?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
 			}
 		})
 	});
@@ -132,7 +132,7 @@
 			type: "get",
 			dataType: "text",
 			success: function(data) {
-				location.href="stockList?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
+				location.href="stocks?pageNum="+1+"&date1="+ $('input[name="date1"]').val() + "&date2=" + $('input[name="date2"]').val();
 			}
 		})
 	});

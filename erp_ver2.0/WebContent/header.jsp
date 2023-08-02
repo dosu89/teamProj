@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>Header Page</title>
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="js/jquery.js"></script>
 <style>
@@ -21,10 +21,10 @@
 <body>
 <%
 	Service_st st_serv = new Service_st();
-	OptionCheck optCheck = new OptionCheck();
+
 	ArrayList<TotalStockVO> alist = st_serv.getTotalList();
-	boolean opt = optCheck.getAlramOpt();
-	int alNum = optCheck.alramStockNum();
+	boolean opt = OptionCheck.getAlramOpt();
+	int alNum = OptionCheck.alramStockNum();
 	
 %>
 	<header class="container-fluid border shadow p-3  bg-body rounded text-center">

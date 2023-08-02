@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>재고 파트</title>
 <!-- CSS only -->
 <link href="css/bootstrap.css" rel="stylesheet" >
 <link rel="stylesheet" type="text/css" href="/erp_ver2.0/css/erp.css">

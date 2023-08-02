@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/erp_ver2.0/css/bootstrap.css">
 <script src="/erp_ver2.0/js/jquery.js"></script>
-<title>Insert title here</title>
+<title>Aside Page</title>
 <style>
 	.aside-li {
 		line-height: 100px;

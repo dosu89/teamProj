@@ -61,6 +61,7 @@ public class FixedCostDAO implements IERP_DAO{
 			while(rs.next()) {
 				if( rs != null ) {
 					FixedCostDTO dto = new FixedCostDTO();
+					dto.setFi_no(rs.getInt("fi_no"));
 					dto.setFi_name(rs.getString("fi_name"));
 					dto.setFi_cost(rs.getInt("fi_cost"));
 					dto.setFi_date(rs.getInt("fi_date"));
@@ -91,7 +92,7 @@ public class FixedCostDAO implements IERP_DAO{
 		FixedCostDTO cost = (FixedCostDTO)dto;
 		boolean flag = false;
 		
-		String query = "UPDATE FROM fixedcost SET fi_cost=?, fi_date=? WHERE fi_name=?";
+		String query = "UPDATE fixedcost SET fi_cost=?, fi_date=? WHERE fi_name=?";
 		
 		try {
 			con = DBcon.getConn();

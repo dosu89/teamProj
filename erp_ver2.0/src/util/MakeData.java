@@ -2,7 +2,8 @@ package util;
 
 import java.time.LocalDate;
 
-public class DateCheck {
+
+public class MakeData {
 
 	public static String setDate2(String date2) {
 		if(date2 == null) {
@@ -20,4 +21,5 @@ public class DateCheck {
 		}
 		return date1;
 	}
+	
 }

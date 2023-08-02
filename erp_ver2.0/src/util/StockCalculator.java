@@ -14,7 +14,9 @@ import vos.TotalStockVO;
 
 public class StockCalculator {
 	
-	// 
+	// 계산 할 상품 코드를 String 배열로 입력 받아
+	// 레시피 테이블에서 받은 값을 기준으로 계산 후 리스트에 저장
+	// 결과 값을 JSON 으로 변환 후 반환
 	public static JSONObject getCalc(String[] products) {
 		Service_st st_serv = new Service_st();
 		List<TotalStockVO> slist = st_serv.getTotalList();
@@ -27,6 +29,7 @@ public class StockCalculator {
 		slist = changeNameToCode(slist);
 		smap = totalStockMap(slist);
 		
+		// MA003 -> MA002 -> MA001 재료를 먼저 사용하는 순서로 계산 
 		for(int i=products.length-1; i>=0; i--) {
 			for(RecipeDTO dto : rlist) {
 				if(products[i].equals(dto.getPr_code())) {
@@ -87,6 +90,7 @@ public class StockCalculator {
 		return smap;
 	}
 	
+	// List에 들어간 수량 값을 Map에 있는 수량값으로 갱신
 	public static List<TotalStockVO> totalStockList(Map<String, Integer> smap, List<TotalStockVO> slist) {
 		for(TotalStockVO vo : slist) {
 			vo.setTotalEa(smap.get(vo.getMa_name()));
@@ -132,9 +136,5 @@ public class StockCalculator {
 		} else {
 			return -1;
 		}
-	}
-	
-	public static int divideEa(int totalEa, int productCnt) {
-		return totalEa/productCnt;
 	}
 }

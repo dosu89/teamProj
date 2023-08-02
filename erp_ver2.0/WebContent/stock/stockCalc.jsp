@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Stock Calculator</title>
+<title>재고 계산</title>
 <link href="css/bootstrap.css" rel="stylesheet" >
 <script src="js/jquery.js"></script>
 </head>
@@ -93,7 +93,7 @@
 			}
 			
 			$.ajax({
-				url : "stockCalc",
+				url : "stock-c",
 				type : "POST",
 				traditional : true,
 				data: {
