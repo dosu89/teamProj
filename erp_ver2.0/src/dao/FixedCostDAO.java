@@ -18,14 +18,15 @@ public class FixedCostDAO implements IERP_DAO{
 		boolean flag = false;
 		FixedCostDTO cost = (FixedCostDTO) dto;
 		
-		String query = "INSERT INTO fixedcost VALUE (?, ? ,?)";
+		String query = "INSERT INTO fixedcost VALUE (?, ?, ? ,?)";
 		
 		try {
 			con = DBcon.getConn();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, cost.getFi_name());
-			pstmt.setInt(2, cost.getFi_cost() );
-			pstmt.setInt(3, cost.getFi_date());
+			pstmt.setInt(1, cost.getFi_no());
+			pstmt.setString(2, cost.getFi_name());
+			pstmt.setInt(3, cost.getFi_cost() );
+			pstmt.setInt(4, cost.getFi_date());
 			int result = pstmt.executeUpdate();
 			if (result == 1 )
 				flag = true;

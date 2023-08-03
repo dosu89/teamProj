@@ -10,8 +10,8 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row text-center">
-			<div class="offset-sm-4 col-sm-4">
+		<div class="row text-center justify-content-center">
+			<div class="col-sm-4">
 				<h2>고정비 목록</h2>
 				<hr>
 			</div>
@@ -37,16 +37,17 @@
 		
 		<div class="row text-center">
 			<div class="offset-sm-5 col-sm-2">
-				<button type="button" class="btn btn-info container-fluid" onclick="">추가</button>
+				<button type="button" class="btn btn-info container-fluid" onclick="addInput()">추가</button>
 			</div>
 		</div>
 	</div>
 <script>
-	
+	window.onload = getList();
 
 	function getList() {
+		$('tbody').html('');
 		$.ajax({
-			url: "fixed-cost?data=1",
+			url: "fixedcost?data=1",
 			type: "GET",
 			dataType: "text",
 			success: function(data) {
@@ -54,10 +55,10 @@
 				let tbl = "";
 				$.each(jobj, function(i){
 					tbl += "<tr>"
-					tbl += "<td style='width:50px'><input type='text' class='form-control' name='name' value=" + jobj[i].fi_no + " readonly></td>"
+					tbl += "<td style='width:60px'><input type='text' class='form-control text-center' name='no' value=" + jobj[i].fi_no + " readonly></td>"
 					tbl += "<td><input type='text' class='form-control' name='name' value=" + jobj[i].fi_name + "></td>"
-					tbl += "<td><div class='input-group mb-3'><input type='text' class='form-control text-end' name='cost' value=" + jobj[i].fi_cost + "><span class='input-group-text'>원</span></div></td>"
-					tbl += "<td style='width:120px;'><div class='input-group mb-3'><input type='text' class='form-control text-end' name='date' value=" + jobj[i].fi_date + "><span class='input-group-text'>일</span></div></td>"
+					tbl += "<td><div class='input-group mb-3'><input type='text' class='form-control text-end' name='cost' value=" + jobj[i].fi_cost + "><span class='input-group-text'>원</span></div><div></div></td>"
+					tbl += "<td style='width:120px;'><div class='input-group mb-3'><input type='text' class='form-control text-end' name='date' value=" + jobj[i].fi_date + "><span class='input-group-text'>일</span></div><div></div></td>"
 					tbl += "<td><div class='d-grid gap-2 d-md-block'><button type='button' class='btn btn-outline-primary modi-btn me-2' data-info='+'>수정</button>"
 					tbl += 		"<button type='button' class='btn btn-outline-primary del-btn'>삭제</button></div></td>"
 					tbl += "</tr>"
@@ -69,6 +70,56 @@
 			}
 		})
 	}
+	
+	function addInput() {
+		let num = parseInt($('tr:last').children('td:eq(0)').children('input:eq(0)').val()) +1;
+		console.log(num);
+		let tr = "<tr>";
+			tr += "<td style='width:60px'><input type='text' class='form-control text-center' name='no' value=" + num + " readonly></td>";
+			tr += "<td><input type='text' class='form-control' name='name'></td>";
+			tr += "<td><div class='input-group mb-3'><input type='text' class='form-control text-end' name='cost'><span class='input-group-text'>원</span></div><div></div></td>";
+			tr += "<td style='width:120px;'><div class='input-group mb-3'><input type='text' class='form-control text-end' name='date'><span class='input-group-text'>일</span></div><div></div></td>";
+			tr += "<td><div class='d-grid gap-2 d-md-block'><button type='button' class='btn btn-outline-primary modi-btn me-2 reg-btn'>등록</button>";
+			tr += 		"<button type='button' class='btn btn-outline-primary del-btn2'>제거</button></div></td>";
+			tr += "</tr>";
+		$('tbody').append(tr);
+	}
+	
+	$(document).on('click','.del-btn2', function(){
+		$('.del-btn2').parent().parent().parent('tr:last').remove();
+	});
+	
+	$(document).on('click', '.reg-btn', function(e) {
+		let input = $(e.target).parent().parent().parent().val();
+		let fi_no = $(input).children('td:eq(0)').children().val();
+		let fi_name = $(input).children('td:eq(1)').children().val();
+		let fi_cost = $(input).children('td:eq(2)').children().children().val();
+		let fi_date = $(input).children('td:eq(3)').children().children().val();
+		
+		if(fi_name.length == 0) {
+			alert("test");
+			return;
+		}
+		
+		$.ajax({
+			url: 'fixedcost',
+			type: 'POST',
+			data: {
+				no : fi_no,
+				name : fi_name,
+				cost : fi_cost,
+				date : fi_date
+			},
+			success: function(data) {
+				alert("등록 완료");
+				getList();
+			},
+			error : function(error) {
+				alert(error);
+			}
+		});
+	})
+	
 	
 	
 </script>

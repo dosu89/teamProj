@@ -17,6 +17,7 @@
 	
 	#page {
         width: 1600px; height: 900px;
+        max-width: none !important;
         margin: 20px auto;
         display: grid;
         grid-gap: 10px;

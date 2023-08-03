@@ -33,6 +33,7 @@
 					<ul class="dropdown-menu">
 		    			<li><a class="dropdown-item" href="expense">지출 등록</a></li>
 		    			<li><a class="dropdown-item" href="expenses"> 지출 리스트</a></li>
+		    			<li><a class="dropdown-item" href="fixedcost"> 고정비</a></li>
 					</ul>
 			</li>
 			<li class="nav-item dropdown">

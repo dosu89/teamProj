@@ -14,7 +14,7 @@ import dto.FixedCostDTO;
 import services.Service_ex;
 import util.MakeJSON;
 
-@WebServlet("/fixed-cost")
+@WebServlet("/fixedcost")
 public class ExpenseFixedCostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,7 +40,17 @@ public class ExpenseFixedCostServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("utf-8");
+		
+		Service_ex ex_ser = new Service_ex();
+		
+		String no = request.getParameter("no");
+		String name = request.getParameter("name");
+		String cost = request.getParameter("cost");
+		String date = request.getParameter("date");
+		
+		
+		ex_ser.registFixedCost(new FixedCostDTO(Integer.parseInt(no), name, Integer.parseInt(cost), Integer.parseInt(date)) );
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
