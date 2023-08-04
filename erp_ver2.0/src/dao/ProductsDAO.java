@@ -65,7 +65,7 @@ public class ProductsDAO implements IERP_DAO {
 	}
 
 	@Override
-	public boolean dalete(Object dto) {
+	public boolean delete(Object dto) {
 		// TODO Auto-generated method stub
 		return false;
 	}

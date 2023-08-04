@@ -109,8 +109,6 @@
 					let list = JSON.parse(data);
 					let clist = list.clist;
 					let slist = list.slist;
-					console.log(clist);
-					console.log(slist);
 					
 					for (var i = 0; i < clist.length; i++) {
 						$('#txt1').append(

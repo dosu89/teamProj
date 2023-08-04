@@ -45,7 +45,7 @@ public class Service_ex {
 	
 	public void deleteExpense(ExpenseDTO e) {
 		ExpenseDAO dao = new ExpenseDAO();
-		if (dao.dalete(e))
+		if (dao.delete(e))
 			System.out.println("삭제 완료");
 	}
 	
@@ -94,12 +94,26 @@ public class Service_ex {
 			System.out.println("고정비 등록 완료");
 	}
 	
+	
 	// 고정비 리스트 DAO에서 가져와서 리스트 반환
 	public List<FixedCostDTO> getFixedCostList() {
 		FixedCostDAO fdao = new FixedCostDAO();
 		@SuppressWarnings("unchecked")
 		List<FixedCostDTO> flist = (List<FixedCostDTO>)(Object)fdao.getData();
 		return flist;
+	}
+	
+	public void modifyFixedCost(FixedCostDTO dto) {
+		FixedCostDAO dao = new FixedCostDAO();
+		
+		if(dao.update(dto))
+			System.out.println("고정비 수정 완료");
+	}
+	
+	public void deleteFixedCost(FixedCostDTO dto) {
+		FixedCostDAO dao = new FixedCostDAO();
+		if(dao.delete(dto))
+			System.out.println("고정비 삭제 완료");
 	}
 	
 }

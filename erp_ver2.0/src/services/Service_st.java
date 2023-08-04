@@ -46,7 +46,7 @@ public class Service_st {
 		
 		public void deleteStock(StockDTO s) {
 			StockDAO dao = new StockDAO();
-			if (dao.dalete(s)) {
+			if (dao.delete(s)) {
 				System.out.println("삭제 완료");
 			}
 		}

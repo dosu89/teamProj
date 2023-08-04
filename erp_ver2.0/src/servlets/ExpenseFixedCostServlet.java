@@ -1,5 +1,6 @@
 package servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -9,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
 
 import dto.FixedCostDTO;
 import services.Service_ex;
@@ -49,16 +52,38 @@ public class ExpenseFixedCostServlet extends HttpServlet {
 		String cost = request.getParameter("cost");
 		String date = request.getParameter("date");
 		
-		
+		System.out.println("Post 실행");
 		ex_ser.registFixedCost(new FixedCostDTO(Integer.parseInt(no), name, Integer.parseInt(cost), Integer.parseInt(date)) );
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		request.setCharacterEncoding("utf-8");
+		
+		Service_ex ex_ser = new Service_ex();
+		
+		BufferedReader br = request.getReader();
+		String str = br.readLine();
+		
+		JSONObject jobj = new JSONObject(str);
+		
+		int no = jobj.getInt("no");
+		String name = jobj.getString("name");
+		int cost = jobj.getInt("cost");
+		int date = jobj.getInt("date");
+		
+		ex_ser.modifyFixedCost(new FixedCostDTO(no, name, cost, date));
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		Service_ex ex_ser = new Service_ex();
+		
+		BufferedReader br = request.getReader();
+		String str = br.readLine();
+		
+		FixedCostDTO dto = new FixedCostDTO();
+		dto.setFi_no(Integer.parseInt(str));
+		
+		ex_ser.deleteFixedCost(dto);
 	}
 
 }
